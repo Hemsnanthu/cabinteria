@@ -1,0 +1,46 @@
+<h2>Admin Panel - Manage Users</h2>
+
+<!-- User Form -->
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <input type="text" formControlName="name" placeholder="Name" />
+  <input type="email" formControlName="gmail" placeholder="Email" />
+  <input type="text" formControlName="department" placeholder="Department" />
+  <input type="text" formControlName="cabinNo" placeholder="Cabin No" />
+  <input type="password" formControlName="password" placeholder="Password" />
+
+  <button type="submit">
+    {{ editMode ? 'Update User' : 'Add User' }}+
+  </button>
+  <button type="button" (click)="resetForm()" *ngIf="editMode">Cancel</button>
+</form>
+
+<hr />
+
+<!-- User Table -->
+<table border="1" cellpadding="5" style="margin-top: 20px; width: 100%;">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Department</th>
+      <th>Cabin No</th>
+      <th>Password</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.gmail }}</td>
+      <td>{{ user.department }}</td>
+      <td>{{ user.cabinNo }}</td>
+      <td>{{ user.password }}</td>
+      <td>
+        <button type="button" (click)="editUser(user)">✏️ Edit</button>
+        <button type="button" (click)="deleteUser(user.id!)">🗑️ Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

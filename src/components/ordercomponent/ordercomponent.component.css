@@ -1,0 +1,57 @@
+.order-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px 25px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+}
+
+.order-container h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #fc8019; /* Swiggy orange */
+  text-align: center;
+  font-weight: 600;
+}
+
+.order-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.order-container th,
+.order-container td {
+  padding: 12px;
+  border-bottom: 1px solid #f1f1f1;
+  font-size: 14px;
+  text-align: center;        /* center horizontally */
+  vertical-align: middle;    /* center vertically */
+}
+
+.order-container th {
+  background: #f9f9f9;
+  font-size: 14px;
+  color: #555;
+  border-bottom: 2px solid #eee;
+}
+
+.order-container tr:last-child td {
+  border-bottom: none;
+}
+
+.order-container h3 {
+  text-align: right;
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Hover effect for rows */
+.order-container tr:hover td {
+  background: #fdf6f1;
+}

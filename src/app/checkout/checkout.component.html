@@ -1,0 +1,21 @@
+<div class="checkout" *ngIf="items.length > 0">
+  <h2>🛒 Checkout</h2>
+  <table>
+    <tr>
+      <th>Food Item</th>
+      <th>Qty</th>
+      <th>Price</th>
+      <th>Total</th>
+    </tr>
+    <tr *ngFor="let item of items">
+      <td>{{ item.name }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>₹{{ item.price }}</td>
+      <td>₹{{ item.quantity * item.price }}</td>
+    </tr>
+    <tr class="grand-total">
+      <td colspan="3"><b>Grand Total</b></td>
+      <td><b>₹{{ grandTotal }}</b></td>
+    </tr>
+  </table>
+</div>

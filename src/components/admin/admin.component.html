@@ -1,0 +1,17 @@
+<p>admin works!</p>
+<!-- <p>postusers works!</p> -->
+ <div class="form-container">
+    <h2>Register</h2>
+    <form [formGroup]="adminform" >
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" formControlName="adminusername">
+      <!-- @if(this.registerform.touched){
+        @if(this.registerform.get['username']?haserror('required')){}
+      } -->
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password"  formControlName="adminpassword">
+
+      <button type="submit" (click)="adminlogin()">Register</button>
+    </form>
+ 

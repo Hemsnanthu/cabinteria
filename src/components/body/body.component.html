@@ -1,0 +1,53 @@
+<h1>Welcome to Cabinteria!</h1>
+
+<div class="register-container">
+  <div class="register-card">
+    <h2 class="title">Registration Form</h2>
+
+    <form>
+      <!-- Name -->
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Enter your name" required />
+      </div>
+
+      <!-- Department -->
+      <div class="form-group">
+        <label for="department">Department</label>
+        <select id="department" required>
+          <option value="" disabled selected>Select your department</option>
+          <option value="CSE">MCA</option>
+          <option value="IT">MBA</option>
+          <option value="ECE">ECE</option>
+          <option value="EEE">EEE</option>
+          <option value="MECH">MECH</option>
+          <option value="CIVIL">CIVIL</option>
+        </select>
+      </div>
+
+      <!-- Cabin No -->
+      <div class="form-group">
+        <label for="cabin">Cabin No</label>
+        <input type="text" id="cabin" placeholder="Enter cabin number" required />
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter password" required />
+      </div>
+
+      <!-- Retype Password -->
+      <div class="form-group">
+        <label for="retype">Retype Password</label>
+        <input type="password" id="retype" placeholder="Retype password" required />
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="btn">Register</button>
+      <br>
+      <br>
+<strong>Already a User? <a href="#">Login</a></strong>
+    </form>
+  </div>
+</div>

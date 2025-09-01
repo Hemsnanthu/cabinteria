@@ -1,0 +1,187 @@
+/* Global Container */
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 15px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 2rem;
+}
+
+/* Food Grid */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.card img:hover {
+  transform: scale(0.95); /* shrink */
+}
+
+.qty-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.qty-control button {
+  background: #ff6600;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  margin: 0 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.qty-control button:hover {
+  background: #e65c00;
+}
+
+.qty-control span {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Checkout Section */
+.checkout {
+  background: #ffffff;
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  font-family: Arial, sans-serif;
+  overflow-x: auto; /* enable horizontal scroll on small devices */
+}
+
+.checkout h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2d3748;
+  font-size: 1.8rem;
+}
+
+.checkout table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  min-width: 500px; /* prevent breaking layout */
+}
+
+.checkout th, 
+.checkout td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 16px;
+}
+
+.checkout th {
+  background: #f8fafc;
+  color: #2d3748;
+}
+
+.checkout tr:hover {
+  background: #f1f5f9;
+}
+
+.checkout .grand-total td {
+  font-size: 18px;
+  background: #edf2f7;
+}
+
+.checkout .btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: #3182ce;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.checkout .btn:hover {
+  background: #2b6cb0;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .title {
+    font-size: 1.6rem;
+  }
+  .card img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.4rem;
+  }
+  .food-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+  .card img {
+    height: 160px;
+  }
+  .checkout h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.2rem;
+  }
+  .food-grid {
+    grid-template-columns: 1fr; /* one card per row */
+  }
+  .card img {
+    height: 150px;
+  }
+  .qty-control button {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+  .qty-control span {
+    font-size: 16px;
+  }
+  .checkout h2 {
+    font-size: 1.3rem;
+  }
+  .checkout table {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,42 @@
+/* Navbar Styling */
+header {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8); /* semi-transparent black */
+  padding: 10px 20px;
+  position:relative; /* stays at the top */
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content:space-around  ;
+}
+
+/* Logo */
+nav .logo img {
+  height: 50px; /* Adjust logo size */
+  width: auto;
+  display: block;
+}
+
+/* Nav Links */
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #f4a261; /* orange hover effect */
+}
+
+/* Make links in a row */
+nav a:not(.logo) {
+  margin-left: 30px;
+}

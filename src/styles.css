@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("assets/newfood.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+   /* Blur strength */
+  z-index: -1; /* Keep it behind content */
+}
