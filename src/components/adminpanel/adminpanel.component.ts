@@ -86,4 +86,9 @@ export class AdminpanelComponent implements OnInit {
   viewusers(){
     this.route.navigate(['/userfromdb']);
   }
+
+  updatefoods(){
+    this.route.navigate(['/updatefood']);
+
+  }
 }

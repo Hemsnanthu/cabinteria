@@ -1,1 +1,44 @@
-<p>updatefood works!</p>
+<div class="container">
+  <h2 class="title">🍽 Food Items Management</h2>
+
+  <!-- Add Food Form -->
+  <div class="form-section">
+    <h3 class="form-title">Add New Food</h3>
+    <div class="form-grid">
+      <input [(ngModel)]="newFood.name" placeholder="Name" />
+      <input [(ngModel)]="newFood.price" type="number" placeholder="Price" />
+      <input [(ngModel)]="newFood.image" placeholder="Image URL" />
+      <input [(ngModel)]="newFood.quantity" type="number" placeholder="Quantity" />
+    </div>
+    <button (click)="addFood()" class="btn add-btn">Add</button>
+  </div>
+
+  <!-- Food Items Grid -->
+  <div class="grid">
+    <div *ngFor="let food of foods" class="card">
+      <img [src]="food.image" alt="{{food.name}}" class="food-img" />
+      <h4 class="food-name">{{food.name}}</h4>
+      <p>💰 Price: ₹{{food.price}}</p>
+      <p>📦 Quantity: {{food.quantity}}</p>
+      <div class="card-actions">
+        <button (click)="setEdit(food)" class="btn edit-btn">Edit</button>
+        <button (click)="deleteFood(food.id!)" class="btn delete-btn">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Modal -->
+  <div *ngIf="editFood?.id" class="modal-overlay">
+    <div class="modal">
+      <h3>Edit Food</h3>
+      <input [(ngModel)]="editFood.name" placeholder="Name" />
+      <input [(ngModel)]="editFood.price" type="number" placeholder="Price" />
+      <input [(ngModel)]="editFood.image" placeholder="Image URL" />
+      <input [(ngModel)]="editFood.quantity" type="number" placeholder="Quantity" />
+      <div class="modal-actions">
+        <button (click)="updateFood()" class="btn save-btn">Save</button>
+        <button (click)="editFood = { id: 0, name: '', price: 0, image: '', quantity: 0 }" class="btn cancel-btn">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

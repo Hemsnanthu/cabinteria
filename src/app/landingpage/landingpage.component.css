@@ -1,0 +1,184 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #1e1e2f, #2a2a4a, #1b1b2e);
+  background-size: 400% 400%;
+  animation: gradientShift 10s ease infinite;
+  color: white;
+  overflow: hidden;
+
+  color: white;
+  /* overflow: hidden; */
+}
+
+.landing-bg {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Tamil Slogan Styling */
+.slogan-container {
+  text-align: center;
+  margin-top: 50px;
+  animation: fadeIn 2s ease-in-out;
+}
+
+.slogan {
+  font-family: "Noto Sans Tamil", sans-serif; /* clean Tamil font */
+  font-size: 2.2rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #ff9800, #ff5722, #e91e63, #9c27b0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGlow 3s infinite alternate;
+}
+
+.slogan span {
+  color: #ffcc00;
+}
+
+.slogan .eng {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 10px;
+  color: #00e5ff;
+  animation: bounce 2s infinite;
+}
+
+/* Animations */
+@keyframes textGlow {
+  from {
+    text-shadow: 0 0 10px #ff9800, 0 0 20px #ff5722;
+  }
+  to {
+    text-shadow: 0 0 20px #e91e63, 0 0 30px #9c27b0;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+
+/* Animated Gradient */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Overlay */
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+    background: rgba(0,0,0,0.1);
+  /* backdrop-filter: blur(4px); */
+}
+
+/* Card as clickable link */
+.card1 {
+  display: block;
+  text-decoration: none;
+  color: white; /* Text always visible */
+  background: rgba(0, 0, 0, 0.5); /* semi-transparent black */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px); /* Glassmorphism */
+  animation: fadeIn 1.5s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.card1 h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.card1 h1 span {
+  color: #ffcc00; /* highlight Cabinteria */
+}
+
+.card1 p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* Hover effect */
+.card1:hover {
+  transform: scale(1.08);
+  box-shadow: 0 15px 50px rgba(255, 204, 0, 0.6);
+  border-color: rgba(255, 204, 0, 0.7);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Importing stylish Google Fonts */
+/* @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@600&family=Poppins:wght@500&display=swap'); */
+
+.slogan-card {
+      border: 2px solid rgba(255, 0, 0, 0.6); /* red border */
+      border-radius: 20px;
+      padding: 40px 30px;
+      background: rgba(255, 255, 255, 0.15); /* transparent glass effect */
+      backdrop-filter: blur(8px);
+      text-align: center;
+      width: 300px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .slogan1 {
+      font-size: 40px;
+      font-weight: 600;
+      line-height: 1.6;
+      color: #fff;
+    }
+
+    .highlight {
+      color: yellow; /* stylish red */
+      font-weight: bold;
+      
+    }
+
+    .cabinteria {
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: 700;
+      color: yellow;
+      letter-spacing: 1px;
+      font-size: 50px;
+    }

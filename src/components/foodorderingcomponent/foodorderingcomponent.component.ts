@@ -1,59 +1,79 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
-interface FoodItem {
-  name: string;
-  image: string;
-  quantity: number;
-}
+import { FoodService, FoodItem } from '../../services/food.service';
+import { FoodOrderService, FoodOrder } from '../../services/order.service';
 
 @Component({
   selector: 'app-foodorderingcomponent',
   standalone: true,
-  imports: [CommonModule,RouterLink,RouterOutlet],
+  imports: [CommonModule, RouterLink, RouterOutlet],
   templateUrl: './foodorderingcomponent.component.html',
-  styleUrl: './foodorderingcomponent.component.css'
+  styleUrls: ['./foodorderingcomponent.component.css']
 })
-export class FoodorderingcomponentComponent {
-  constructor(private router:Router){}
+export class FoodorderingcomponentComponent implements OnInit {
+  foods: FoodItem[] = [];
 
-   breakfast = [
-    { name: 'Idli', price: 20, quantity: 0, image: 'assets/images/idly.jpeg' },
-    { name: 'Dosa', price: 40, quantity: 0, image: 'assets/images/dosai.jpg' },
-    { name: 'Chappathi', price: 30, quantity: 0, image: 'assets/images/chappatti.jpeg'},
-    { name: 'Poori', price: 35, quantity: 0, image: 'assets/images/poori.jpeg' },
-    { name: 'Idiyappam', price: 35, quantity: 0, image: 'assets/images/poori.jpeg' },
-    { name: 'Pongal', price: 35, quantity: 0, image: 'assets/images/poori.jpeg' },
-    
-  ];
+  constructor(
+    private router: Router,
+    private foodService: FoodService,
+    private orderService: FoodOrderService
+  ) {}
 
-  lunchfoods = [
-    { name: 'Meals', price: 80, quantity: 0, image: 'assets/images/meals.jpeg' },
-    { name: 'Veg Fried Rice', price: 90, quantity: 0, image: 'assets/images/vegfrie.jpeg' },
-    { name: 'Veg Noodles', price: 85, quantity: 0, image: 'assets/images/vegnoodles.jpeg' }
-  ]
-   
+  ngOnInit(): void {
+    this.loadFoods();
+  }
+
+  loadFoods(): void {
+    this.foodService.getFoods().subscribe({
+      next: (data) => {
+        // Initialize quantity to 0 for each item
+        this.foods = data.map(item => ({ ...item, quantity: 0 }));
+      },
+      error: (err) => console.error('Error fetching foods', err)
+    });
+  }
 
   increaseQty(item: FoodItem) {
     item.quantity++;
   }
 
   decreaseQty(item: FoodItem) {
-    if (item.quantity > 0) {
-      item.quantity--;
-    }
-  }
-   getSelectedItems() {
-    return [...this.breakfast, ...this.lunchfoods].filter(item => item.quantity > 0);
+    if (item.quantity > 0) item.quantity--;
   }
 
-  getTotal() {
-    return this.getSelectedItems()
-      .reduce((total, item) => total + item.quantity * item.price, 0);
+  getSelectedItems(): FoodItem[] {
+    return this.foods.filter(item => item.quantity > 0);
   }
+
+  getTotal(): number {
+    return this.getSelectedItems().reduce((total, item) => total + item.price * item.quantity, 0);
+  }
+
   checkout() {
-    const selectedItems = this.breakfast.filter(item => item.quantity > 0);
+    const selectedItems = this.getSelectedItems();
+
+    if (selectedItems.length === 0) {
+      alert('Please select at least one item to checkout.');
+      return;
+    }
+
+    selectedItems.forEach(item => {
+      const order: FoodOrder = {
+        foodname: item.name,
+        quantity: item.quantity,
+        price: item.price,
+        cabinnumber: 1
+      };
+
+
+      
+      this.orderService.createOrder(order).subscribe({
+        next: (res) => console.log('Order placed', res),
+        error: (err) => console.error('Error placing order', err)
+      });
+    });
+
     this.router.navigate(['/order'], { state: { items: selectedItems } });
   }
-
 }

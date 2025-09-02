@@ -11,13 +11,15 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { AdminComponent } from '../components/admin/admin.component';
 import { AdminpanelComponent } from '../components/adminpanel/adminpanel.component';
 import { DisplayusersComponent } from '../components/adminpanel/displayusers/displayusers.component';
+import { FoodComponent } from '../components/adminpanel/updatefood/updatefood.component';
+import { LandingpageComponent } from './landingpage/landingpage.component';
 // import { ContactComponent } from '../components/contact/contact.component';
 
 
 export const routes: Routes = [
     {
         path:'',
-        component:HomeComponent
+        component:LandingpageComponent
     },
     {
         path:'home',
@@ -59,6 +61,10 @@ export const routes: Routes = [
     },{
         path:'userfromdb',
         component:DisplayusersComponent
+    },
+    {
+        path:'updatefood',
+        component:FoodComponent
     }
     
 

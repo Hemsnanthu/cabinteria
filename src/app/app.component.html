@@ -1,7 +1,11 @@
-<app-header></app-header>
-<section class="flex-1">
-<router-outlet></router-outlet>
-</section>
+<!-- Show landing page only if not logged in -->
+<app-landingpage *ngIf="!isLoggedIn"></app-landingpage>
 
-
-<app-footer></app-footer>
+<!-- Show header and content after login -->
+<div *ngIf="isLoggedIn" class="app-layout">
+  <app-header></app-header>
+  <section class="flex-1">
+    <router-outlet></router-outlet>
+  </section>
+  <app-footer></app-footer>
+</div>

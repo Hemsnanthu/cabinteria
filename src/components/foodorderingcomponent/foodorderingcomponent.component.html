@@ -1,62 +1,40 @@
- <div class="container">
-  <h2 class="title">🍴 Food Menu</h2>
-<div class="">
-  <h1>Breakfast foods</h1>
-  <div class="food-grid">
-    <div class="card" *ngFor="let item of breakfast">
-      <img [src]="item.image" [alt]="item.name" />
-      <h3>{{ item.name }}</h3>
-      <h3>{{item.price}}</h3>
+<div class="container">
+  <h2>🍽 Food Ordering</h2>
 
+  <div class="food-grid">
+    <div *ngFor="let item of foods" class="food-card">
+      <img [src]="item.image" alt="{{item.name}}" class="food-img">
+      <h4>{{item.name}}</h4>
+      <p>Price: ₹{{item.price}}</p>
       <div class="qty-control">
         <button (click)="decreaseQty(item)">-</button>
-        <span>{{ item.quantity }}</span>
+        <span>{{item.quantity}}</span>
         <button (click)="increaseQty(item)">+</button>
       </div>
     </div>
   </div>
-  </div>
 
-<div class="">
-  <h1>Lunch foods</h1>
-  <div class="food-grid">
-    <div class="card" *ngFor="let item of lunchfoods">
-      <img [src]="item.image" [alt]="item.name" />
-      <h3>{{ item.name }}</h3>
-      <h3>{{item.price}}</h3>
-
-      <div class="qty-control">
-        <button (click)="decreaseQty(item)">-</button>
-        <span>{{ item.quantity }}</span>
-        <button (click)="increaseQty(item)">+</button>
-      </div>
-    </div>
-  </div>
-  </div>
-
-
-
-</div> 
-<div class="checkout" *ngIf="getSelectedItems().length > 0">
-    <h2>🛒 Checkout</h2>
-    <table>
+  <!-- Selected Items / Checkout -->
+  <div class="checkout">
+    <h3>Selected Items</h3>
+    <div *ngIf="getSelectedItems().length === 0">No items selected.</div>
+    <table *ngIf="getSelectedItems().length > 0">
       <tr>
-        <th>Food Item</th>
+        <th>Food</th>
         <th>Qty</th>
         <th>Price</th>
-        <th>Total</th>
       </tr>
       <tr *ngFor="let item of getSelectedItems()">
-        <td>{{ item.name }}</td>
-        <td>{{ item.quantity }}</td>
-        <td>₹{{ item.price }}</td>
-        <td>₹{{ item.quantity * item.price }}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.quantity}}</td>
+        <td>₹{{item.price * item.quantity}}</td>
       </tr>
       <tr class="grand-total">
-        <td colspan="3"><b>Grand Total</b></td>
-        <td><b>₹{{ getTotal() }}</b></td>
+        <td colspan="2"><strong>Total</strong></td>
+        <td><strong>₹{{getTotal()}}</strong></td>
       </tr>
     </table>
-    <button class="btn" (click)="checkout()">Proceed to Pay</button>
-  </div>
 
+    <button class="btn" (click)="checkout()">Checkout</button>
+  </div>
+</div>
