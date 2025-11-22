@@ -58,19 +58,19 @@ Git / GitHub
 ## 📸 Screenshots
 
 ### Home
-![Home](images/landing.png)
+![Home](./images/landing.png)
 
 ### Login
-![Login](images/login.png)
+![Login](./images/login.png)
 
 ### Register
-![Register](images/register.png)
+![Register](./images/register.png)
 
 ### Services
-![Services](images/services.png)
+![Services](./images/services.png)
 
 ### FoodSection
-![Foodsection](images/foodsection.png)
+![Foodsection](./images/foodsection.png)
 
 ### Order
-![Order](images/order.png)
+![Order](./images/order.png)
