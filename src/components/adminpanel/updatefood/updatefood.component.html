@@ -37,7 +37,7 @@
       <input [(ngModel)]="editFood.quantity" type="number" placeholder="Quantity" />
       <div class="modal-actions">
         <button (click)="updateFood()" class="btn save-btn">Save</button>
-        <button (click)="editFood = { id: 0, name: '', price: 0, image: '', quantity: 0 }" class="btn cancel-btn">Cancel</button>
+        <button (click)="cancelEdit()" class="btn cancel-btn">Cancel</button>
       </div>
     </div>
   </div>

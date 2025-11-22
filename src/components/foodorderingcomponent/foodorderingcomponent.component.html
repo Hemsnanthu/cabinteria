@@ -1,37 +1,103 @@
+<!-- 🔹 Profile Dropdown -->
+<!-- 🔹 TOP NAVBAR -->
+<nav class="top-nav">
+
+  <button class="back-btn" routerLink="/">← Back to Home</button>
+
+  <h3 class="nav-title"></h3>
+
+  <!-- RIGHT SECTION -->
+  <div class="nav-right">
+
+    <!-- 🟨 Checkout Right -->
+     <!-- 🔔 Notification Dropdown -->
+<div class="nav-notification" (click)="toggleNotification()">
+
+  <!-- Bell Icon -->
+  <i class="bi bi-bell-fill bell-icon"></i>
+
+  <!-- Red Count Badge -->
+  <span *ngIf="notifications.length > 0" class="notify-badge">
+    {{ notifications.length }}
+  </span>
+
+  <!-- Dropdown -->
+  <div class="notify-dropdown" *ngIf="notificationOpen">
+    <h4>Notifications</h4>
+
+    <div *ngIf="notifications.length === 0" class="empty-msg">
+      No new notifications
+    </div>
+
+    <div *ngFor="let n of notifications" class="notify-item">
+      <p class="title">{{ n.title }}</p>
+      <small class="time">{{ n.time }}</small>
+    </div>
+  </div>
+
+</div>
+
+    <button class="order-btn" routerLink="/order">Orders</button>
+
+    <!-- 👤 Profile Left -->
+    <div class="nav-profile">
+      <img src="assets/images/IMG_4082.JPG" class="profile-photo" (click)="toggleDropdown()" />
+
+      <div class="dropdown-menu" *ngIf="dropdownOpen">
+        <p class="user-name">{{ loggedInUser }}</p>
+        <button (click)="goToProfile()">Profile</button>
+        <button (click)="logout()">Logout</button>
+      </div>
+    </div>
+
+  </div>
+
+</nav>
+
+
 <div class="container">
+
+  
+
   <h2>🍽 Food Ordering</h2>
 
   <div class="food-grid">
     <div *ngFor="let item of foods" class="food-card">
-      <img [src]="item.image" alt="{{item.name}}" class="food-img">
-      <h4>{{item.name}}</h4>
-      <p>Price: ₹{{item.price}}</p>
+      <img class="food-img" [src]="item.image" alt="{{ item.name }}">
+      <h4>{{ item.name }}</h4>
+      <p>Price: ₹{{ item.price }}</p>
+
       <div class="qty-control">
         <button (click)="decreaseQty(item)">-</button>
-        <span>{{item.quantity}}</span>
+        <span>{{ item.quantity }}</span>
         <button (click)="increaseQty(item)">+</button>
       </div>
     </div>
   </div>
 
-  <!-- Selected Items / Checkout -->
   <div class="checkout">
     <h3>Selected Items</h3>
-    <div *ngIf="getSelectedItems().length === 0">No items selected.</div>
+
+    <div *ngIf="getSelectedItems().length === 0">
+      No items selected.
+    </div>
+
     <table *ngIf="getSelectedItems().length > 0">
       <tr>
         <th>Food</th>
         <th>Qty</th>
         <th>Price</th>
       </tr>
+
       <tr *ngFor="let item of getSelectedItems()">
-        <td>{{item.name}}</td>
-        <td>{{item.quantity}}</td>
-        <td>₹{{item.price * item.quantity}}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>₹{{ item.price * item.quantity }}</td>
       </tr>
+
       <tr class="grand-total">
         <td colspan="2"><strong>Total</strong></td>
-        <td><strong>₹{{getTotal()}}</strong></td>
+        <td><strong>₹{{ getTotal() }}</strong></td>
       </tr>
     </table>
 

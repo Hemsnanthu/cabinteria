@@ -1,0 +1,138 @@
+/* Remove scrollbar completely */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* ✅ Prevents scrolling */
+}
+
+.landing-bg {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+    background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+}
+/* Ensure full-screen background stays fixed */
+.login-bg {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ff7e5f, #feb47b, #ff9966, #ff5e62);
+  background-size: 400% 400%;
+  animation: gradientMove 10s ease infinite;
+  overflow: hidden; /* ✅ No inner scroll */
+}
+
+/* ===== Back Button Styling ===== */
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: linear-gradient(135deg, #ff9800, #ff5722);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.back-btn:hover {
+  background: linear-gradient(135deg, #ff5722, #ff9800);
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* Adjust container to fit inside viewport */
+.container {
+  margin: 0;
+  padding: 0;
+}
+
+/* 🎞️ Animation Keyframes */
+/* Gradient animation */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 🧾 Registration Form Card */
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* 📝 Heading */
+h2 {
+  color: #ff5e00;
+  font-weight: 700;
+}
+
+/* 🧍 Form Labels */
+.form-label {
+  font-weight: 600;
+  color: #333;
+}
+
+/* ✏️ Inputs */
+.form-control, .form-select {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #ff7e5f;
+  box-shadow: 0 0 6px rgba(255, 94, 0, 0.4);
+  outline: none;
+}
+
+/* ✅ Register Button */
+.btn-success {
+  background: linear-gradient(135deg, #ff7e5f, #ff5e62);
+  border: none;
+  font-weight: 600;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn-success:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(255, 94, 0, 0.4);
+}
+
+/* 🔗 Login Link */
+a {
+  color: #ff5e00;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #e64a19;
+  text-decoration: underline;
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .card {
+    width: 90%;
+  }
+}

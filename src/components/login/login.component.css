@@ -1,0 +1,106 @@
+/* Full page background */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #4c69ba, #3b5998); /* FB-style blue gradient */
+  display: flex;
+  position: absolute;
+  justify-content: flex-end; /* aligns content to right */
+  align-items: center;
+}
+
+/* Login container */
+.login-container {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 10px;
+  width: 360px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  margin-right: 50px; /* space from right edge */
+  text-align: left;
+}
+
+/* Heading */
+.login-container h2 {
+  font-size: 28px;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+/* Form groups */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #555;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+input:focus {
+  border-color: #3b5998;
+  outline: none;
+  box-shadow: 0 0 5px rgba(59,89,152,0.5);
+}
+
+/* Button */
+.btn {
+  width: 100%;
+  padding: 14px;
+  background: #3b5998;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #2d4373;
+}
+
+/* Signup link */
+.login-container strong {
+  display: block;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.login-container a {
+  color: #3b5998;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.login-container a:hover {
+  color: #2d4373;
+  text-decoration: underline;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 768px) {
+  html, body {
+    justify-content: center; /* center for mobile */
+  }
+
+  .login-container {
+    margin-right: 0;
+    width: 90%;
+  }
+}

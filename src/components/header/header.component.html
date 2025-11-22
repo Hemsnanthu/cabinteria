@@ -1,12 +1,19 @@
-<header>
-    
-    <nav>
-        <a href="#"class="logo">
-        <img src="assets/images/CABINTERIA.png" alt="Cabinteria"></a>
-        <a routerLink="/home">Home</a>
-        <a routerLink="/login">LogIn</a>
-        <a routerLink="/contact">Contact</a>
-        <a routerLink="/checkout">Checkout</a>
-        <a routerLink="/about">About</a>
-    </nav>
+<header [class.hidden-header]="isHidden">
+  <nav>
+    <a href="#" class="logo">
+      <img src="assets/images/CABINTERIA.png" alt="Cabinteria" />
+    </a>
+
+    <div class="nav-links">
+      <a routerLink="/">Home</a>
+      <a routerLink="/about">About</a>
+      <a routerLink="/services">Services</a>
+      <a routerLink="/contact">Contact</a>
+    </div>
+
+    <div class="nav-actions">
+      <!-- <button (click)="toggleTheme()" class="theme-btn">Toggle Theme</button> -->
+      <a routerLink="/register" class="signin-link">Signin/Signup</a>
+    </div>
+  </nav>
 </header>

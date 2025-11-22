@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { LoginFormComponent } from '../loginform/loginform.component';
+
 import { RouterLink } from '@angular/router';
+import { LoginFormComponent } from '../loginform/loginform.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink,LoginFormComponent],
+  imports: [LoginFormComponent,ReactiveFormsModule,FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

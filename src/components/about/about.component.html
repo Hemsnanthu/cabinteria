@@ -1,59 +1,93 @@
-<!-- <p>about works!</p> -->
- <div class="about-container">
-  <div class="card">
-    <h2>Cabinteria</h2>
-    <p>
-      Our project <b>Cabinteria</b> is a food ordering system designed for 
-      college faculty. Teachers can order breakfast and lunch, and food will be 
-      delivered directly to their cabins.
-    </p>
-    <p>
-      Built with <b>Angular</b> (frontend) and <b>Spring Boot</b> (backend),
-      and <b>MySQL</b> for database management.
-    </p>
-    
-  </div>
-</div>
+<app-header></app-header>
 
-<div class="team-container">
-  <h2>Our Team</h2>
-  <div class="team-members">
-    
-    <div class="team-card">
-      <a routerLink="/sudhir">
-       
-      <img src="https://via.placeholder.com/150" alt="Member 1">
-      <h3>Sudhir Kumar</h3>
-      <p>Full stack Developer</p>
-      </a>
-     
+<main class="page-wrapper">
+
+  <!-- ABOUT SECTION -->
+  <section class="about-container">
+    <div class="card">
+      <h2>🍱 Cabinteria</h2>
+
+      <p>
+        <b>Cabinteria</b> is a smart food ordering system designed especially
+        for college faculty members. Teachers can quickly order breakfast and
+        lunch directly from their cabins without waiting in long queues.
+      </p>
+
+      <p>
+        This system helps save time, reduces crowd in canteens, and improves
+        overall campus efficiency. Faculty members can easily browse the menu,
+        select items, and place orders in a few clicks.
+      </p>
+
+      <h4>🔧 Technologies Used</h4>
+      <ul>
+        <li>Angular — Frontend UI</li>
+        <li>Spring Boot — Backend API</li>
+        <li>MySQL — Database</li>
+        <li>Bootstrap / CSS — Styling</li>
+      </ul>
+
+      <h4>🎯 Key Features</h4>
+      <ul>
+        <li>Quick food ordering for faculty</li>
+        <li>Separate breakfast & lunch menus</li>
+        <li>Real-time order tracking</li>
+        <li>Secure login system</li>
+        <li>Admin dashboard for canteen staff</li>
+      </ul>
     </div>
-    <div class="team-card">
-      <a routerLink="/nantha">
-      <img src="https://via.placeholder.com/150" alt="Member 1">
-      <h3>Nanthakumar</h3>
-      <p>Frontend Developer</p>
-      </a>
+  </section>
+
+  <!-- TEAM SECTION -->
+  <section class="team-container">
+    <h2>👨‍💻 Our Team</h2>
+
+    <div class="team-members">
+
+      <div class="team-card">
+        <a routerLink="/sudhir">
+          <img src="assets/images/sudhirim.jpg" alt="Sudhir">
+          <h3>Sudhir Kumar</h3>
+          <p>Full Stack Developer</p>
+        </a>
+      </div>
+
+      <div class="team-card">
+        <a routerLink="/nantha">
+          <img src="assets/images/IMG_4082.JPG" alt="Nanthakumar">
+          <h3>Nanthakumar</h3>
+          <p>Frontend Developer</p>
+        </a>
+      </div>
+
+      <div class="team-card">
+        <a routerLink="/mohan">
+          <img src="assets/images/mohanim.jpg" alt="Mohan">
+          <h3>MohanSai</h3>
+          <p>Database Engineer</p>
+        </a>
+      </div>
+
+      <div class="team-card">
+        <a routerLink="/arun">
+          <img src="assets/images/mohanim.jpg" alt="Arun">
+          <h3>Arun</h3>
+          <p>Backend Engineer</p>
+        </a>
+
+      </div>
+
+      <div class="team-card">
+        <a routerLink="/viswa">
+          <img src="assets/images/viswa.jpg" alt="Viswa">
+          <h3>Viswa</h3>
+          <p>Backend Developer</p>
+        </a>
+      </div>
+
     </div>
+  </section>
 
-    <div class="team-card">
-      <img src="https://via.placeholder.com/150" alt="Member 2">
-      <h3>MohanSai</h3>
-      <p>Database Engineer</p>
-    </div>
+</main>
 
-    <div class="team-card">
-      <img src="https://via.placeholder.com/150" alt="Member 3">
-      <h3>Arun</h3>
-      <p>Database Engineer</p>
-    </div>
-
-    <div class="team-card">
-      <img src="https://via.placeholder.com/150" alt="Member 4">
-      <h3>Viswa</h3>
-      <p>Backend Developer</p>
-    </div>
-  </div>
-</div>
-
-
+<app-footer></app-footer>

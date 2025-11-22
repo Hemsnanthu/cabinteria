@@ -1,20 +1,58 @@
+<button class="back-btn" (click)="goBack()">← Back</button>
+
 <div class="order-container">
+  
   <h2>🧾 Order Summary</h2>
 
   <table>
-    <tr>
-      <th>Food</th>
-      <th>Qty</th>
-      <th>Price</th>
-      <th>Total</th>
-    </tr>
-    <tr *ngFor="let item of items">
-      <td>{{ item.name }}</td>
-      <td>{{ item.quantity }}</td>
-      <td>₹ {{ item.price }}</td>
-      <td>₹ {{ item.price * item.quantity }}</td>
-    </tr>
+    <thead>
+      <tr>
+        <th>Food</th>
+        <th>Qty</th>
+        <th>Price</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td>{{ item.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>₹ {{ item.price }}</td>
+        <td>₹ {{ item.price * item.quantity }}</td>
+      </tr>
+    </tbody>
   </table>
 
   <h3>Grand Total: ₹ {{ total }}</h3>
+
+  <div style="text-align:center; margin-top: 20px;">
+    <button (click)="confi()" class="confirm-btn">
+      Confirm Order
+    </button>
+  </div>
+</div>
+
+<!-- Custom Alert -->
+<div class="modal fade show" *ngIf="showAlert" tabindex="-1"
+  style="display:block; background: rgba(0,0,0,0.5);">
+  
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title">✅ Success!</h5>
+      </div>
+
+      <div class="modal-body text-center">
+        <p>Your order has been placed successfully.</p>
+      </div>
+
+      <div class="modal-footer">
+        <button (click)="closeAlert()" class="btn btn-success">
+          OK
+        </button>
+      </div>
+
+    </div>
+  </div>
 </div>

@@ -1,0 +1,123 @@
+
+<app-header></app-header>
+<div class="login-bg">
+ 
+
+<div class="container  d-flex justify-content-center align-items-center py-3 register-bg">
+  <div class="card shadow-lg p-4" style="max-width: 800px; width: 100%;">
+    <!-- <h2 class="text-center mb-2">📝 Registration Form</h2> -->
+
+    <form [formGroup]="registrationform" (ngSubmit)="registrationfun()">
+
+      <!-- Name -->
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input 
+          type="text" 
+          id="name" 
+          class="form-control" 
+          placeholder="Enter your name" 
+          formControlName="Name" />
+        <div class="text-danger small mt-1"
+          *ngIf="registrationform.get('Name')?.hasError('minlength') && registrationform.get('Name')?.touched">
+          *Name should contain at least 3 characters
+        </div>
+      </div>
+
+      <!-- Gmail -->
+      <div class="mb-3">
+        <label for="mail" class="form-label">Gmail</label>
+        <input 
+          type="email" 
+          id="mail" 
+          class="form-control" 
+          placeholder="Enter your mail ID" 
+          formControlName="gmail" />
+        <div class="text-danger small mt-1"
+          *ngIf="registrationform.get('gmail')?.hasError('required') && registrationform.get('gmail')?.touched">
+          *Email is required!
+        </div>
+        <div class="text-danger small mt-1"
+          *ngIf="registrationform.get('gmail')?.hasError('email') && registrationform.get('gmail')?.touched">
+          *Enter a valid Email
+        </div>
+      </div>
+
+      <!-- Department -->
+      <div class="mb-3">
+        <label for="department" class="form-label">Department</label>
+        <select id="department" class="form-select" formControlName="department">
+          <option value="" disabled>Select your department</option>
+          <option value="MCA">MCA</option>
+          <option value="MBA">MBA</option>
+          <option value="EEE">EEE</option>
+          <option value="MECH">MECH</option>
+          <option value="CIVIL">CIVIL</option>
+        </select>
+      </div>
+
+      <!-- Cabin No -->
+      <div class="mb-3">
+        <label for="cabin" class="form-label">Cabin No</label>
+        <input 
+          type="text" 
+          id="cabin" 
+          class="form-control" 
+          placeholder="Enter cabin number" 
+          formControlName="cabinNo" />
+        <div class="text-danger small mt-1"
+          *ngIf="registrationform.get('cabinNo')?.hasError('required') && registrationform.get('cabinNo')?.touched">
+          *Provide your Cabin No
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input 
+          type="password" 
+          id="password" 
+          class="form-control" 
+          placeholder="Enter password" 
+          formControlName="password" />
+        <div class="text-danger small mt-1"
+          *ngIf="registrationform.get('password')?.hasError('required') && registrationform.get('password')?.touched">
+          *Password is required
+        </div>
+        <div class="text-danger small mt-1"
+          *ngIf="registrationform.get('password')?.hasError('minlength') && registrationform.get('password')?.touched">
+          *Password should contain at least 6 characters
+        </div>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="mb-3">
+        <label for="retype" class="form-label">Retype Password</label>
+        <input 
+          type="password" 
+          id="retype" 
+          class="form-control" 
+          placeholder="Retype password" 
+          formControlName="confirmpassword" />
+        <div class="text-danger small mt-1"
+          *ngIf="registrationform.get('confirmpassword')?.hasError('required') && registrationform.get('confirmpassword')?.touched">
+          *Retype your password
+        </div>
+      </div>
+
+      <!-- Submit -->
+      <div class="d-grid">
+        <button type="submit" class="btn btn-success" [disabled]="registrationform.invalid">Register</button>
+      </div>
+
+      <!-- Login Link -->
+      <div class="text-center mt-3">
+        <strong>Already a User? 
+          <a routerLink="/login" class="text-decoration-none">Login</a>
+        </strong>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+<app-footer></app-footer>

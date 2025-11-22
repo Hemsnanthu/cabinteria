@@ -91,4 +91,8 @@ export class AdminpanelComponent implements OnInit {
     this.route.navigate(['/updatefood']);
 
   }
+
+  orderdetails(){
+    this.route.navigate(['/orderdetails'])
+  }
 }

@@ -11,15 +11,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginFormComponent } from '../components/loginform/loginform.component';
 import { AdminComponent } from '../components/admin/admin.component';
 import { AdminpanelComponent } from '../components/adminpanel/adminpanel.component';
-import { LandingpageComponent } from './landingpage/landingpage.component';
+// import { LandingpageComponent } from './landingpage/landingpage.component';
 import { CommonModule, NgIf } from '@angular/common';
-
+import { RegisterComponent } from '../components/register/register.component';
+import { StaffComponent } from '../staff/staff.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NgIf,CommonModule,RouterOutlet,LandingpageComponent ,HeaderComponent,FooterComponent,LoginFormComponent,BodyComponent,LoginComponent,AboutComponent,ContactComponent,ReactiveFormsModule],
-  templateUrl: './app.component.html',
+  imports: [NgIf,HttpClientModule,CommonModule,RouterOutlet,RegisterComponent,HeaderComponent,FooterComponent,LoginFormComponent,BodyComponent,LoginComponent,AboutComponent,ContactComponent,ReactiveFormsModule,StaffComponent],
+  templateUrl: './app.component.html'
+  ,
   styleUrl: './app.component.css'
 })
 export class AppComponent {

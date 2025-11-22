@@ -1,44 +1,49 @@
-<div class="contact-container">
-  <h2>Contact Us</h2>
-  <p class="subtitle">We’d love to hear from you! Fill out the form below.</p>
+<app-header></app-header>
 
-  <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
-    <div class="form-group">
-      <label for="name">Full Name</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        [(ngModel)]="contactData.name"
-        required
-        placeholder="Enter your full name"
-      />
-    </div>
+<main class="main-content">
 
-    <div class="form-group">
-      <label for="email">Email Address</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        [(ngModel)]="contactData.email"
-        required
-        placeholder="Enter your email"
-      />
-    </div>
+  <div class="contact-container">
+    <h2>Contact Us</h2>
+    <p class="subtitle">We’d love to hear from you! Fill out the form below.</p>
 
-    <div class="form-group">
-      <label for="message">Message</label>
-      <textarea
-        id="message"
-        name="message"
-        [(ngModel)]="contactData.message"
-        required
-        placeholder="Write your message here..."
-      ></textarea>
-    </div>
+    <form (ngSubmit)="sendToWhatsApp()" #contactForm="ngForm">
 
-    <button type="submit" class="btn-submit">Send Message</button>
-  </form>
-</div>
+      <div class="form-group">
+        <label>Full Name</label>
+        <input
+          type="text"
+          name="name"
+          [(ngModel)]="contactData.name"
+          required
+          placeholder="Enter your full name" />
+      </div>
 
+      <div class="form-group">
+        <label>Email Address</label>
+        <input
+          type="email"
+          name="email"
+          [(ngModel)]="contactData.email"
+          required
+          placeholder="Enter your email" />
+      </div>
+
+      <div class="form-group">
+        <label>Message</label>
+        <textarea
+          name="message"
+          [(ngModel)]="contactData.message"
+          required
+          placeholder="Write your message here..."></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">
+        📤 Send via WhatsApp
+      </button>
+
+    </form>
+  </div>
+
+</main>
+
+<app-footer></app-footer>

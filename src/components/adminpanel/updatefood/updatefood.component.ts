@@ -12,10 +12,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./updatefood.component.css']
 })
 export class FoodComponent implements OnInit {
-  foods: FoodItem[] = [
-  { id: 1, name: 'Idli', price: 20, image: 'assets/images/idly.jpeg', quantity: 10 },
-  { id: 2, name: 'Dosa', price: 40, image: 'assets/images/dosai.jpg', quantity: 5 }
-];
+  foods: FoodItem[] = [];
 
   newFood: FoodItem = { name: '', price: 0, image: '', quantity: 0 };
   editFood: FoodItem = { id: 0, name: '', price: 0, image: '', quantity: 0 };
@@ -29,6 +26,7 @@ export class FoodComponent implements OnInit {
   loadFoods(): void {
     this.foodService.getFoods().subscribe(data => {
       this.foods = data;
+     console.log(this.foods); 
     });
   }
 
@@ -41,6 +39,9 @@ export class FoodComponent implements OnInit {
 
   setEdit(food: FoodItem): void {
     this.editFood = { ...food };
+  }
+   cancelEdit(): void {
+    this.editFood = { id: 0, name: '', price: 0, image: '', quantity: 0 }; // reset to default
   }
 
   updateFood(): void {

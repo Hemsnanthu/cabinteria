@@ -1,41 +1,56 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+import { LoginService } from '../../services/login.services';
+import { HeaderComponent } from "../header/header.component";
+import { FooterComponent } from "../footer/footer.component";
+import { RegisterComponent } from '../register/register.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-loginform',
   standalone: true,
-  imports: [RouterLink,RouterOutlet,ReactiveFormsModule,FormsModule],
+  imports: [
+    ReactiveFormsModule, // ✅ REQUIRED
+    FormsModule // (optional)
+    ,CommonModule,RouterModule,
+    HeaderComponent,
+    FooterComponent,RegisterComponent
+],
   templateUrl: './loginform.component.html',
-  styleUrl: './loginform.component.css'
+  styleUrls: ['./loginform.component.css']
 })
-export class LoginFormComponent { 
-  private usernamelogin:string="mavn";
-  private passwordlogin:string="user";
-  constructor(private router:Router,private fb:FormBuilder){
-    
-  }
-  Userlogin!:FormGroup;
-  ngOnInit(){
-    this.fb.group({
-      username:['',Validators.required],
-      password:['',Validators.required ]
+export class LoginFormComponent implements OnInit {
 
-    })
+  Userlogin!: FormGroup;
+
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private loginServices: LoginService
+  ) {}
+
+  ngOnInit(): void {
+    this.Userlogin = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
-  logincontrol(){
-    // if(this.Userlogin.value.username==this.usernamelogin && this.Userlogin.value.password==this.passwordlogin){
-    //   alert("Login Successfull");
-      this.router.navigate(['/foodorder']);
+
+  logincontrol(): void {
+    if (this.Userlogin.invalid) {
+      alert('Please fill all fields');
+      return;
     }
-    // else{
-    //   alert("Login Failed");
-    // }
- 
 
+    this.loginServices.login(this.Userlogin.value).subscribe({
+      next: () => {
+        alert('Login Successful');
+        this.router.navigate(['/foodorder']);
+      },
+      error: () => {
+        alert('Invalid Username or Password');
+      }
+    });
+  }
 }
-// checking(){
-//   alert("hi");
-
-// }
-

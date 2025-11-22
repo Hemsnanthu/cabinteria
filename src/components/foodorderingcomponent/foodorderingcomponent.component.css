@@ -1,187 +1,490 @@
-/* Global Container */
+/* ✅ Base Styles (Desktop First) */
 .container {
   max-width: 1200px;
-  margin: 20px auto;
-  padding: 0 15px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
   text-align: center;
-  font-family: Arial, sans-serif;
+  position: relative;
 }
 
-.title {
-  margin-bottom: 20px;
-  color: #333;
+h2 {
   font-size: 2rem;
+  margin-bottom: 25px;
+  color: #222;
+  font-weight: 600;
 }
 
-/* Food Grid */
 .food-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
 }
-
-.card {
-  background: #fff;
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+/* .back-btn {
+  position: fixed;
+  top: 15px;
+  left: 20px;
+  background: linear-gradient(135deg, #ff9800, #ff5722);
+  color: white;
+  border: none;
+  padding: 10px 18px;
   border-radius: 8px;
-  transition: transform 0.3s ease;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  z-index: 1000;
+} */
+
+.food-card {
+  background: #fff;
+  padding: 12px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: center;
 }
 
-.card img:hover {
-  transform: scale(0.95); /* shrink */
+.food-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.food-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  transition: transform 0.4s ease-out;
+}
+
+.food-card:hover .food-img {
+  transform: scale(1.1);
+}
+
+.food-card h4 {
+  margin: 10px 0 6px;
+  font-size: 1.2rem;
+  color: #111;
+  font-weight: 600;
+}
+
+.food-card p {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 10px;
 }
 
 .qty-control {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   margin-top: 12px;
 }
 
 .qty-control button {
-  background: #ff6600;
-  color: white;
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  color: #fff;
   border: none;
   padding: 6px 12px;
-  margin: 0 8px;
-  border-radius: 6px;
+  margin: 0 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .qty-control button:hover {
-  background: #e65c00;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(255, 126, 95, 0.4);
 }
 
 .qty-control span {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-/* Checkout Section */
-.checkout {
-  background: #ffffff;
-  padding: 20px;
-  margin: 20px auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 900px;
-  font-family: Arial, sans-serif;
-  overflow-x: auto; /* enable horizontal scroll on small devices */
-}
-
-.checkout h2 {
+  min-width: 35px;
   text-align: center;
-  margin-bottom: 20px;
-  color: #2d3748;
-  font-size: 1.8rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #333;
+}
+
+.checkout {
+  background: #fdfdfd;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  text-align: left;
+}
+
+.checkout h3 {
+  margin-bottom: 18px;
+  color: #222;
+  font-weight: 600;
 }
 
 .checkout table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
-  min-width: 500px; /* prevent breaking layout */
+  margin-bottom: 18px;
 }
 
-.checkout th, 
-.checkout td {
+.checkout th, .checkout td {
   padding: 12px;
+  border-bottom: 1px solid #eee;
   text-align: center;
-  border-bottom: 1px solid #e2e8f0;
-  font-size: 16px;
-}
-
-.checkout th {
-  background: #f8fafc;
-  color: #2d3748;
-}
-
-.checkout tr:hover {
-  background: #f1f5f9;
 }
 
 .checkout .grand-total td {
-  font-size: 18px;
-  background: #edf2f7;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #000;
 }
 
-.checkout .btn {
+.bell-icon {
+  font-size: 22px;
+  color: #374151; /* gray-700 */
+}
+
+.nav-notification {
+  @apply relative cursor-pointer;
+}
+
+.notify-badge {
+  @apply absolute -top-1 -right-1 bg-red-600 text-white text-xs
+         px-1.5 py-0.5 rounded-full;
+}
+
+.notify-dropdown {
+  @apply absolute right-0 mt-3 w-60 bg-white shadow-xl rounded-xl p-3 z-50;
+}
+
+.notify-item {
+  @apply border-b border-gray-200 py-2;
+}
+
+.notify-item:last-child {
+  @apply border-none;
+}
+
+
+.btn {
   display: block;
   width: 100%;
-  padding: 12px;
-  background: #3182ce;
-  color: white;
+  background: linear-gradient(135deg, #4caf50, #81c784);
+  color: #fff;
+  padding: 14px;
   border: none;
-  border-radius: 8px;
-  font-size: 16px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-.checkout .btn:hover {
-  background: #2b6cb0;
+.btn:hover {
+  background: linear-gradient(135deg, #388e3c, #66bb6a);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(56, 142, 60, 0.3);
 }
 
-/* Responsive Design */
+/* ✅ Responsive Styles */
 @media (max-width: 1024px) {
-  .title {
-    font-size: 1.6rem;
+  .container {
+    padding: 15px;
   }
-  .card img {
-    height: 180px;
+  h2 {
+    font-size: 1.8rem;
+  }
+  .food-img {
+    height: 160px;
   }
 }
 
 @media (max-width: 768px) {
-  .title {
-    font-size: 1.4rem;
-  }
   .food-grid {
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
   }
-  .card img {
-    height: 160px;
+  .food-card {
+    width: 100%; /* Full width for tablets */
   }
-  .checkout h2 {
-    font-size: 1.5rem;
+  h2 {
+    font-size: 1.6rem;
+  }
+  .food-img {
+    height: 150px;
   }
 }
 
 @media (max-width: 480px) {
-  .title {
-    font-size: 1.2rem;
+  .container {
+    margin: 20px auto;
+    padding: 10px;
+  }
+  h2 {
+    font-size: 1.4rem;
   }
   .food-grid {
-    grid-template-columns: 1fr; /* one card per row */
+    grid-template-columns: 1fr; /* Single column for mobiles */
+    gap: 15px;
   }
-  .card img {
-    height: 150px;
+  .food-card {
+    padding: 10px;
+    border-radius: 12px;
+  }
+  .food-img {
+    height: 140px;
   }
   .qty-control button {
-    font-size: 14px;
     padding: 5px 10px;
+    font-size: 0.9rem;
   }
   .qty-control span {
-    font-size: 16px;
+    font-size: 0.9rem;
   }
-  .checkout h2 {
-    font-size: 1.3rem;
-  }
-  .checkout table {
-    font-size: 14px;
+  .btn {
+    font-size: 0.9rem;
+    padding: 12px;
   }
 }
+
+/* 🔹 User Profile Dropdown */
+.profile-dropdown {
+  position: fixed;
+  top: 10px;
+  right: 15px;
+  z-index: 9999;
+}
+
+.profile-icon img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 55px;
+  right: 0;
+  background: black;
+  padding: 12px;
+  border-radius: 10px;
+  min-width: 150px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-menu p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.dropdown-menu button {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  background: #f5f5f5;
+  cursor: pointer;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.dropdown-menu button:hover {
+  background: #e0e0e0;
+}
+
+/* 🟦 Top Navbar */
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 12px 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  position: relative;
+}
+
+
+/* Notification Icon */
+.nav-notification {
+  position: relative;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.bell-icon {
+  font-size: 24px;
+  color: #333;
+}
+
+/* Red Badge */
+.notify-badge {
+  position: absolute;
+  top: -5px;
+  right: -3px;
+  background: red;
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 5px;
+  border-radius: 50%;
+}
+
+/* Dropdown Box */
+.notify-dropdown {
+  position: absolute;
+  right: 0;
+  top: 35px;
+  width: 260px;
+  background: #fff;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  padding: 10px;
+  z-index: 10;
+}
+
+.notify-dropdown h4 {
+  margin: 0 0 10px;
+  font-size: 16px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.notify-item {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.notify-item:last-child {
+  border-bottom: none;
+}
+
+.notify-item .title {
+  font-weight: 600;
+  margin: 0;
+}
+
+.notify-item .time {
+  color: gray;
+}
+
+.empty-msg {
+  text-align: center;
+  color: gray;
+  padding: 10px;
+}
+
+
+/* Back Button */
+.back-btn {
+  background: transparent;
+  border: none;
+  color: #ffcc00;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.back-btn:hover{
+  
+  color: black;
+}
+
+
+/* Title */
+.nav-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+
+/* 🟨 Right section (Profile + Checkout) */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 30px;     /* spacing between profile + checkout button */
+}
+
+
+/* Profile container */
+.nav-profile {
+  position: relative;
+}
+
+
+/* Profile Image */
+.profile-photo {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+}
+
+
+/* 🔽 Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 60px;
+  background: #fff;
+  padding: 12px;
+  border-radius: 10px;
+  width: 150px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.dropdown-menu p {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.dropdown-menu button {
+  width: 100%;
+  padding: 8px;
+  background: #f5f5f5;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+
+.dropdown-menu button:hover {
+  background: #e0e0e0;
+}
+
+
+/* Checkout Button */
+.order-btn {
+  background-color: #ffcc00;
+  color: #000;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+  
+}
+
+.order-btn:hover {
+  background-color: #f5bf00;
+  color: white;
+}
+
+
+/* Make page content start below navbar */
+.container {
+  margin-top: 90px !important;
+}
+

@@ -1,28 +1,43 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { OrderStorageService } from '../../services/orderstorage.service';
 
 @Component({
   selector: 'app-ordercomponent',
   standalone: true,
-  imports: [RouterLink,RouterOutlet,FormsModule,CommonModule],
+  imports: [RouterLink, RouterOutlet, FormsModule, CommonModule],
   templateUrl: './ordercomponent.component.html',
   styleUrl: './ordercomponent.component.css'
 })
-export class OrdercomponentComponent {
+export class OrdercomponentComponent implements OnInit {
+
   items: any[] = [];
   total: number = 0;
+  showAlert = false;
 
-  constructor(private router: Router) {
-    const nav = this.router.getCurrentNavigation();
-    const state = nav?.extras.state as { items: any[] };
-    
-    if (state?.items) {
-      this.items = state.items;
-      this.total = this.items.reduce((sum, i) => sum + i.price * i.quantity, 0);
-    }
+  constructor(private orderStorage: OrderStorageService) {}
+
+  ngOnInit() {
+    // Load items saved from checkout
+    this.items = this.orderStorage.getOrder();
+
+    // Calculate total
+    this.total = this.items.reduce((sum, item) =>
+      sum + item.price * item.quantity, 0
+    );
+  }
+  goBack() {
+    window.history.back();
   }
 
+  confi() {
+    this.showAlert = true;
+  }
 
+  closeAlert() {
+    this.showAlert = false;
+    alert("Thanks for Ordering");
+  }
 }

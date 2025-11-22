@@ -1,105 +1,119 @@
-/* Full page background */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #4c69ba, #3b5998); /* FB-style blue gradient */
+/* ===== Full Animated Gradient Background ===== */
+.login-bg {
+  background: linear-gradient(-45deg, #063aca, #4a90e2, #adc2ee, #5f6fff);
+  background-size: 400% 400%;
+  animation: gradientMove 8s ease infinite;
+  min-height: 100vh;
+  width: 100%;
   display: flex;
-  justify-content: flex-end; /* aligns content to right */
+  justify-content: center;
   align-items: center;
 }
 
-/* Login container */
-.login-container {
-  background: #fff;
-  padding: 40px 30px;
-  border-radius: 10px;
-  width: 360px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  margin-right: 50px; /* space from right edge */
-  text-align: left;
-}
-
-/* Heading */
-.login-container h2 {
-  font-size: 28px;
-  margin-bottom: 25px;
-  color: #333;
-}
-
-/* Form groups */
-.form-group {
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 600;
-  color: #555;
-}
-
-input {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-  transition: all 0.3s;
-}
-
-input:focus {
-  border-color: #3b5998;
-  outline: none;
-  box-shadow: 0 0 5px rgba(59,89,152,0.5);
-}
-
-/* Button */
-.btn {
-  width: 100%;
-  padding: 14px;
-  background: #3b5998;
-  color: #fff;
+/* ===== Back Button Styling ===== */
+.back-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: linear-gradient(135deg, #ff9800, #ff5722);
+  color: white;
   border: none;
-  border-radius: 6px;
+  padding: 10px 18px;
+  border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  z-index: 1000;
 }
 
-.btn:hover {
-  background: #2d4373;
+.back-btn:hover {
+  background: linear-gradient(135deg, #ff5722, #ff9800);
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
 
-/* Signup link */
-.login-container strong {
-  display: block;
-  margin-top: 20px;
-  font-size: 14px;
+/* Animation keyframes */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-.login-container a {
-  color: #3b5998;
+/* ===== Login Card Styling ===== */
+.card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== Headings ===== */
+h2 {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* ===== Form Inputs ===== */
+.form-control {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.form-control:focus {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: #fff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+/* ===== Button ===== */
+.btn-primary {
+  background-color: #ff5722 !important;
+  border: none !important;
+  border-radius: 6px;
+  transition: all 0.3s ease;
   font-weight: 600;
-  text-decoration: none;
-  transition: color 0.3s;
 }
 
-.login-container a:hover {
-  color: #2d4373;
+.btn-primary:hover {
+  background-color: #e64a19 !important;
+  transform: scale(1.05);
+}
+
+/* ===== Signup Text ===== */
+strong {
+  color: #fff;
+}
+
+a {
+  color: #ffcc80;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ffffff;
   text-decoration: underline;
 }
 
-/* Responsive for smaller screens */
-@media (max-width: 768px) {
-  html, body {
-    justify-content: center; /* center for mobile */
-  }
-
-  .login-container {
-    margin-right: 0;
-    width: 90%;
-  }
-}

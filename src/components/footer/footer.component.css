@@ -1,11 +1,196 @@
 footer {
-  position: fixed;
+  position: relative;
   bottom: 0;
-  left: 0;
   width: 100%;
-  height: 60px;        
-  background: #333;
+}
+/* Theme Toggle Button */
+/* Food Card Styles */
+/* Footer Base */
+.footer {
+  background: #7f1d1d;
+  color: #d1d5db;
+  padding: 60px 0;
+  transition: 0.3s ease-in-out;
+}
+
+.footer.light {
+  background: #ffffff;
+  color: #374151;
+}
+
+/* Layout */
+.footer-container {
+  width: 80%;
+  margin: auto;
+}
+
+.footer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.footer-title {
+  font-size: 32px;
+  font-weight: bold;
   color: white;
+}
+
+.footer.light .footer-title {
+  color: #111827;
+}
+
+/* Theme Toggle Button */
+.theme-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background: #1f2937;
+  color: white;
+  cursor: pointer;
+}
+
+.footer.light .theme-btn {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.theme-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Grid */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+/* Columns */
+.footer-col h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: white;
+}
+
+.footer.light .footer-col h3 {
+  color: #111827;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col li {
+  margin-bottom: 10px;
+}
+
+/* Footer links */
+.footer-link {
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.footer-link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: currentColor;
+  transition: 0.3s;
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+
+/* Newsletter */
+.newsletter {
+  display: flex;
+  margin-top: 10px;
+}
+
+.newsletter input {
+  padding: 12px;
+  border: none;
+  outline: none;
+  flex: 1;
+  background: #374151;
+  color: white;
+  border-radius: 8px 0 0 8px;
+}
+
+.footer.light .newsletter input {
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.join-btn {
+  padding: 12px 18px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  cursor: pointer;
+}
+
+.join-btn:hover {
+  background: #dc2626;
+}
+
+/* Social Icons */
+.footer-social {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+
+.footer-social a {
+  font-size: 20px;
+  color: inherit;
+  transition: 0.3s;
+}
+
+.footer-social a:hover {
+  color: white;
+}
+
+.footer.light .footer-social a:hover {
+  color: #111827;
+}
+
+/* Copyright */
+.footer-copy {
   text-align: center;
-  line-height: 60px;   
+  margin-top: 40px;
+  color: #9ca3af;
+}
+
+.footer.light .footer-copy {
+  color: #6b7280;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-header {
+    flex-direction: column;
+    gap: 20px;
+  }
 }

@@ -1,10 +1,39 @@
-body {
+html,body {
   margin: 0;
+  height: 100%;
   font-family: Arial, sans-serif;
   position: relative;
   min-height: 100vh;
   overflow-x: hidden;
 }
+
+
+/* Main Angular container */
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Content between header and footer */
+.page-wrapper {
+  flex: 1;          /* THIS pushes footer to bottom */
+  padding: 40px 0;  /* Space from header */
+  background: #f7f7f7;
+}
+
+/* Footer fix */
+app-footer {
+  margin-top: auto;  /* Push footer to bottom */
+  width: 100%;
+}
+
+/* Optional looks */
+.card {
+  border-radius: 16px;
+  background: white;
+}
+
 
 body::before {
   content: "";
@@ -13,10 +42,27 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("assets/newfood.jpg");
+  background-color: #FEFEFE;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
    /* Blur strength */
   z-index: -1; /* Keep it behind content */
 }
+
+/* Default (light mode) */
+:root {
+  --bg-color: #FFFCF3;
+  --text-color: #000000;
+  --footer-bg: #7f1d1d;
+}
+
+/* Dark mode */
+:root.dark {
+  --bg-color: #0f0f0f;
+  --text-color: #ffffff;
+  --footer-bg: #111111;
+}
+
+
+

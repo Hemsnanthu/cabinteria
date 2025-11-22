@@ -1,0 +1,10 @@
+<div class="p-4">
+  <h2 class="text-2xl font-bold mb-4">Staff List</h2>
+  <button (click)="addStaff()" class="bg-blue-500 text-white px-4 py-2 rounded">Add Sample Staff</button>
+
+  <ul class="mt-4">
+    <li *ngFor="let s of staffList" class="border bg-red-300 p-2 my-1 rounded">
+      {{ s.name }} ({{ s.email }}) - {{ s.role }}
+    </li>
+  </ul>
+</div>
