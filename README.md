@@ -54,3 +54,23 @@ Tools:
 ⊙ Vercel (Deployment)
 
 Git / GitHub
+
+## 📸 Screenshots
+
+### Home
+![Home](images/landing.png)
+
+### Login
+![Login](images/login.png)
+
+### Register
+![Register](images/register.png)
+
+### Services
+![Services](images/services.png)
+
+### FoodSection
+![Foodsection](images/foodsection.png)
+
+### Order
+![Order](images/order.png)
