@@ -2,7 +2,7 @@
 
 Cabinteria is a modern food ordering web application specially designed for college faculty members. It allows teachers to easily order breakfast and lunch directly from their cabins, reducing crowd and saving time.
 
-This project was built as part of a college mini / final year project with full frontend and backend support.
+This project was built as part of  EDUBRIDGE Learnin Pvt Ltd project with full frontend and backend support.
 
 🚀 Features
 
