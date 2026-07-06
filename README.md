@@ -70,7 +70,7 @@ Git / GitHub
 ![Services](./images/services.png)
 
 ### FoodSection
-![Foodsection](./images/foodsection.png)
+![Foodsection](./images/foodssection.png)
 
 ### Order
 ![Order](./images/order.png)
