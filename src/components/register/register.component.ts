@@ -33,7 +33,7 @@ export class RegisterComponent {
  // home.component.ts
 registrationfun() {
   if (this.registrationform.valid) {
-    this.userService.registerUser(this.registrationform.value).subscribe({
+    this.userService.register(this.registrationform.value).subscribe({
       next: res => {
         console.log('User registered:', res);
         alert('Registration Successful!');

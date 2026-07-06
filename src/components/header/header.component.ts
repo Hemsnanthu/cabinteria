@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -11,6 +12,9 @@ import { RouterModule } from '@angular/router';
 })
 export class HeaderComponent {
 
+
+  
+  loggedInUser = '';
   lastScrollTop = 0;
   isHidden = false;
   isDark = false;
@@ -29,21 +33,28 @@ export class HeaderComponent {
     this.lastScrollTop = current <= 0 ? 0 : current;
   }
 
-  constructor() {
-    // Load theme
-    const theme = localStorage.getItem('theme');
-    this.isDark = theme === 'dark';
+  // constructor() {
+  //   // Load theme
+  //   const theme = localStorage.getItem('theme');
+  //   this.isDark = theme === 'dark';
 
-    // Add/remove class on <html>
-    document.documentElement.classList.toggle('dark', this.isDark);
+  //   // Add/remove class on <html>
+  //   document.documentElement.classList.toggle('dark', this.isDark);
+  // }
+
+
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    const user = this.userService.getUser();
+    this.loggedInUser = user ? user.name : 'Guest';
   }
 
-  // Toggle theme
-  // toggleTheme() {
-  //   this.isDark = !this.isDark;
-
-  //   document.documentElement.classList.toggle('dark', this.isDark);
-
-  //   localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
-  // }
+  logout() {
+    this.userService.logout();
+    this.router.navigate(['/login']);
+  }
 }

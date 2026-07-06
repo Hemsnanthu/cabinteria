@@ -5,13 +5,22 @@ import { FoodItem } from './food.service';
   providedIn: 'root'
 })
 export class OrderStorageService {
-  private latestOrder: FoodItem[] = [];
 
+  private STORAGE_KEY = 'cabinteria_order';
+
+  // Save order
   setOrder(items: FoodItem[]) {
-    this.latestOrder = items;
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(items));
   }
 
+  // Get order
   getOrder(): FoodItem[] {
-    return this.latestOrder;
+    const data = localStorage.getItem(this.STORAGE_KEY);
+    return data ? JSON.parse(data) : [];
+  }
+
+  // Clear order after success
+  clearOrder() {
+    localStorage.removeItem(this.STORAGE_KEY);
   }
 }

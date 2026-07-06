@@ -23,6 +23,7 @@ import { AboutComponent } from '../components/about/about.component';
 import { RegisterComponent } from '../components/register/register.component';
 import { StaffComponent } from '../staff/staff.component';
 import { ServicesComponent } from '../components/services/services.component';
+// import { ProfileComponent } from '../components/profile/profile.component';
 // import { ContactComponent } from '../components/contact/contact.component';
 
 
@@ -104,6 +105,8 @@ export const routes: Routes = [
     {
         path:'staff',
         component:StaffComponent
-    }
+    },
+    
+
 
 ];

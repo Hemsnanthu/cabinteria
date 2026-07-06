@@ -1,54 +1,57 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { LoginService } from '../../services/login.services';
+import { CommonModule } from '@angular/common';
+import { UserService } from '../../services/user.service';
 import { HeaderComponent } from "../header/header.component";
 import { FooterComponent } from "../footer/footer.component";
-import { RegisterComponent } from '../register/register.component';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-loginform',
   standalone: true,
-  imports: [
-    ReactiveFormsModule, // ✅ REQUIRED
-    FormsModule // (optional)
-    ,CommonModule,RouterModule,
-    HeaderComponent,
-    FooterComponent,RegisterComponent
-],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule, HeaderComponent, FooterComponent],
   templateUrl: './loginform.component.html',
   styleUrls: ['./loginform.component.css']
 })
 export class LoginFormComponent implements OnInit {
 
-  Userlogin!: FormGroup;
+  loginForm!: FormGroup;
+  loading = false;
+  
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private loginServices: LoginService
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
-    this.Userlogin = this.fb.group({
+    this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
   logincontrol(): void {
-    if (this.Userlogin.invalid) {
+    if (this.loginForm.invalid) {
       alert('Please fill all fields');
       return;
     }
 
-    this.loginServices.login(this.Userlogin.value).subscribe({
-      next: () => {
-        alert('Login Successful');
+    this.loading = true;
+
+    this.userService.login(this.loginForm.value).subscribe({
+      next: (res) => {
+        this.loading = false;
+
+        // ✅ Save user
+        this.userService.setUser(res);
+
+        // Navigate
         this.router.navigate(['/foodorder']);
       },
       error: () => {
+        this.loading = false;
         alert('Invalid Username or Password');
       }
     });

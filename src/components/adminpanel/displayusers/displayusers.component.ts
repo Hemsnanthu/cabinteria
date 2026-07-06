@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { User, UserService } from '../../../services/user.service';
-// import { UserService, User } from '../../services/user.service';
 
 @Component({
   selector: 'app-adminpanel',
@@ -13,15 +12,20 @@ import { User, UserService } from '../../../services/user.service';
   styleUrls: ['./displayusers.component.css']
 })
 export class DisplayusersComponent implements OnInit {
+
   users: User[] = [];
   userForm: FormGroup;
   editMode = false;
   currentUserId: number | null = null;
 
-  constructor(private fb: FormBuilder, private userService: UserService,private route:Router) {
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserService,
+    private route: Router
+  ) {
     this.userForm = this.fb.group({
       name: ['', Validators.required],
-      gmail: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]], // ✅ FIXED
       department: ['', Validators.required],
       cabinNo: ['', Validators.required],
       password: ['', Validators.required]
@@ -32,24 +36,25 @@ export class DisplayusersComponent implements OnInit {
     this.loadUsers();
   }
 
-  // Load all users
+  // ✅ Load users
   loadUsers() {
-    this.userService.displayusersfromdb().subscribe(res => {
+    this.userService.getAllUsers().subscribe(res => {
       this.users = res;
     });
   }
 
-  // Insert or Update
+  // ✅ Add / Update
   onSubmit() {
     if (this.userForm.valid) {
+
       if (this.editMode && this.currentUserId) {
-        this.userService.updateUser(this.currentUserId, this.userForm.value).subscribe(() => {
-          alert('✅ User updated');
-          this.loadUsers();
-          this.resetForm();
-        });
+        this.userService.updateUser(this.currentUserId, this.userForm.value);
+        alert('✅ User updated');
+        this.loadUsers();
+        this.resetForm();
+
       } else {
-        this.userService.registerUser(this.userForm.value).subscribe(() => {
+        this.userService.register(this.userForm.value).subscribe(() => {
           alert('✅ User added');
           this.loadUsers();
           this.resetForm();
@@ -58,14 +63,14 @@ export class DisplayusersComponent implements OnInit {
     }
   }
 
-  // Edit user
+  // ✅ Edit
   editUser(user: User) {
     this.editMode = true;
     this.currentUserId = user.id!;
     this.userForm.patchValue(user);
   }
 
-  // Delete user
+  // ✅ Delete
   deleteUser(id: number) {
     if (confirm('Are you sure to delete this user?')) {
       this.userService.deleteUser(id).subscribe(() => {
@@ -75,7 +80,7 @@ export class DisplayusersComponent implements OnInit {
     }
   }
 
-  // Reset form
+  // ✅ Reset
   resetForm() {
     this.editMode = false;
     this.currentUserId = null;

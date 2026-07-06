@@ -1,58 +1,86 @@
-<button class="back-btn" (click)="goBack()">← Back</button>
 
-<div class="order-container">
-  
-  <h2>🧾 Order Summary</h2>
+<div class="order-page">
 
-  <table>
-    <thead>
-      <tr>
-        <th>Food</th>
-        <th>Qty</th>
-        <th>Price</th>
-        <th>Total</th>
-      </tr>
-    </thead>
+  <button class="back-btn" (click)="goBack()">← Back</button>
 
-    <tbody>
-      <tr *ngFor="let item of items">
-        <td>{{ item.name }}</td>
-        <td>{{ item.quantity }}</td>
-        <td>₹ {{ item.price }}</td>
-        <td>₹ {{ item.price * item.quantity }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="order-card" *ngIf="items.length > 0; else emptyCart">
 
-  <h3>Grand Total: ₹ {{ total }}</h3>
+    <h2>🧾 Order Summary</h2>
 
-  <div style="text-align:center; margin-top: 20px;">
-    <button (click)="confi()" class="confirm-btn">
-      Confirm Order
+    <table class="order-table">
+      <thead>
+        <tr>
+          <th>Food</th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let item of items">
+          <td>{{ item.name }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>₹ {{ item.price }}</td>
+          <td>₹ {{ item.price * item.quantity }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="total-section">
+      <h3>Grand Total</h3>
+      <span>₹ {{ total }}</span>
+    </div>
+
+    <!-- 🔥 NEW SECTION -->
+    <div class="extra-details">
+      <label>Cabin</label>
+      <select [(ngModel)]="cabin">
+        <option value="">Select Cabin</option>
+        <option *ngFor="let c of cabins" [value]="c">{{ c }}</option>
+      </select>
+
+      <label>Table Number</label>
+      <input type="number" [(ngModel)]="tableNumber" placeholder="Enter table no">
+
+      <label>Payment Method</label>
+      <select [(ngModel)]="paymentMethod">
+        <option value="">Select Payment</option>
+        <option value="CASH">Cash</option>
+        <option value="UPI">UPI</option>
+        <option value="CARD">Card</option>
+      </select>
+    </div>
+
+    <button 
+      (click)="confi()" 
+      class="confirm-btn"
+      [disabled]="loading">
+      {{ loading ? 'Processing...' : 'Confirm Order' }}
     </button>
+
   </div>
+
+  <!-- Empty Cart -->
+  <ng-template #emptyCart>
+    <div class="order-card empty">
+      <h3>🛒 No items in cart</h3>
+      <button (click)="goBack()">Go Back</button>
+    </div>
+  </ng-template>
+
 </div>
 
-<!-- Custom Alert -->
-<div class="modal fade show" *ngIf="showAlert" tabindex="-1"
-  style="display:block; background: rgba(0,0,0,0.5);">
-  
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header bg-success text-white">
-        <h5 class="modal-title">✅ Success!</h5>
-      </div>
+<!-- Success Modal -->
+<div class="custom-modal" *ngIf="showAlert">
+  <div class="modal-box">
+    <h3>✅ Order Placed!</h3>
+    <p>Your order has been placed successfully.</p>
 
-      <div class="modal-body text-center">
-        <p>Your order has been placed successfully.</p>
-      </div>
+    <!-- 🔥 Show Order Details -->
+    <p><strong>Order ID:</strong> {{ orderId }}</p>
+    <p><strong>Time:</strong> {{ orderTime }}</p>
 
-      <div class="modal-footer">
-        <button (click)="closeAlert()" class="btn btn-success">
-          OK
-        </button>
-      </div>
-
-    </div>
+    <button (click)="closeAlert()">OK</button>
   </div>
 </div>
